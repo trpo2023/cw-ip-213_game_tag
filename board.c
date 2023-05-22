@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define SIZE 4
 
@@ -43,5 +44,19 @@ void mixing_board(){
                 }
                 break;
         }
+    }
+}
+
+void print_board(){
+    for (int row = 0; row < SIZE; row++){
+        for (int col = 0; col < SIZE; row++){
+            if (board[row][col] == 0){
+                printf("  ");
+            } else{
+                printf("%2d", board[row][col]);
+            }
+            printf(" ")
+        }
+        printf("\n");
     }
 }
