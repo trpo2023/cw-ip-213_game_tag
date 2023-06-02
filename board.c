@@ -78,31 +78,34 @@ int is_solved()
     return 1;
 }
 
-void make_move(char move)
-{
-    int row, col;
-    find_empty_cell(&row, &col);
-
+void make_move(char move) {
     switch (move) {
-    case 'U':
-        if (row > 0) {
-            swap_cells(row, col, row - 1, col);
-        }
-        break;
-    case 'D':
-        if (row < SIZE - 1) {
-            swap_cells(row, col, row + 1, col);
-        }
-        break;
-    case 'L':
-        if (col > 0) {
-            swap_cells(row, col, row, col - 1);
-        }
-        break;
-    case 'R':
-        if (col < SIZE - 1) {
-            swap_cells(row, col, row, col + 1);
-        }
-        break;
+        case 'w':
+            if (empty_row > 0) {
+                board[empty_row][empty_col] = board[empty_row - 1][empty_col];
+                board[--empty_row][empty_col] = 0;
+            }
+            break;
+        case 's':
+            if (empty_row < SIZE - 1) {
+                board[empty_row][empty_col] = board[empty_row + 1][empty_col];
+                board[++empty_row][empty_col] = 0;
+            }
+            break;
+        case 'a':
+            if (empty_col > 0) {
+                board[empty_row][empty_col] = board[empty_row][empty_col - 1];
+                board[empty_row][--empty_col] = 0;
+            }
+            break;
+        case 'd':
+            if (empty_col < SIZE - 1) {
+                board[empty_row][empty_col] = board[empty_row][empty_col + 1];
+                board[empty_row][++empty_col] = 0;
+            }
+            break;
+        default:
+            printf("Invalid move. Try again.\n");
+            break;
     }
 }
