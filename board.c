@@ -59,7 +59,7 @@ void print_board()
             } else {
                 printf("%2d", board[row][col]);
             }
-            printf(" ")
+            printf(" ");
         }
         printf("\n");
     }

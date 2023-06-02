@@ -2,7 +2,7 @@
 #include "board.h"
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    //setlocale(LC_ALL, "Russian");
     initialize_board();
     mixing_board();
     while (!is_solved()) {
