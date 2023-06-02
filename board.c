@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 #define SIZE 4
 
@@ -75,4 +76,33 @@ int is_solved()
         }
     }
     return 1;
+}
+
+void make_move(char move)
+{
+    int row, col;
+    find_empty_cell(&row, &col);
+
+    switch (move) {
+    case 'U':
+        if (row > 0) {
+            swap_cells(row, col, row - 1, col);
+        }
+        break;
+    case 'D':
+        if (row < SIZE - 1) {
+            swap_cells(row, col, row + 1, col);
+        }
+        break;
+    case 'L':
+        if (col > 0) {
+            swap_cells(row, col, row, col - 1);
+        }
+        break;
+    case 'R':
+        if (col < SIZE - 1) {
+            swap_cells(row, col, row, col + 1);
+        }
+        break;
+    }
 }
