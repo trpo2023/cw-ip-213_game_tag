@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include "board.h"
 
 #define SIZE 4
 
@@ -16,6 +17,8 @@ void initialize_board()
             board[row][col] = num++;
         }
     }
+    empty_row = SIZE - 1;
+    empty_col = SIZE - 1; 
     board[empty_row][empty_col] = 0;
 }
 
@@ -23,7 +26,7 @@ void mixing_board()
 {
     srand(time(Null));
     for (int row = 0; row < 100; row++) {
-        int movement = rand() % 5 + 1;
+        int movement = rand() % 4 + 1;
         switch (movement) {
         case 1: // влево
             if (empty_col > 0) {
@@ -32,8 +35,8 @@ void mixing_board()
             }
         case 2: // вверх
             if (empty_row > 0) {
-                board[empty_row][empty_col] = board[empty_row + 1][empty_col];
-                board[empty_row + 1][empty_col] = 0;
+                board[empty_row][empty_col] = board[empty_row - 1][empty_col];
+                board[empty_row - 1][empty_col] = 0;
             }
         case 3: // вправо
             if (empty_col > SIZE - 1) {
@@ -42,8 +45,8 @@ void mixing_board()
             }
         case 4: // вниз
             if (empty_row > SIZE - 1) {
-                board[empty_row][empty_col] = board[empty_row - 1][empty_col];
-                board[empty_row - 1][empty_col] = 0;
+                board[empty_row][empty_col] = board[empty_row + 1][empty_col];
+                board[empty_row + 1][empty_col] = 0;
             }
             break;
         }
