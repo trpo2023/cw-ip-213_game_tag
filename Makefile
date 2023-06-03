@@ -2,19 +2,23 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 TARGET = tag
 
+SRC_DIR = ./src/
+OBJ_DIR = ./obj/
+
+SRC = $(wildcard $(SRC_DIR)*.c)
+OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
+
 all: $(TARGET)
 
-main.o: main.c
-	$(CC) $(CFLAGS) main.c -c
 
-board.o: board.c
-	$(CC) $(CFLAGS) board.c -c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-tag: main.o board.o
-	$(CC) $(CFLAGS) main.o board.o -o $(TARGET)
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(TARGET)
 
 clean:
-	rm main.o board.o
+	rm -f $(OBJ_DIR)*.o
 
 fclean: clean
 	rm $(TARGET)
