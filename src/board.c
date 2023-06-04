@@ -1,8 +1,8 @@
+#include "board.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdbool.h>
-#include "board.h"
 
 #define SIZE 4
 
@@ -18,7 +18,7 @@ void initialize_board()
         }
     }
     empty_row = SIZE - 1;
-    empty_col = SIZE - 1; 
+    empty_col = SIZE - 1;
     board[empty_row][empty_col] = 0;
 }
 
@@ -56,8 +56,6 @@ void mixing_board()
     }
 }
 
-
-
 void print_board()
 {
     for (int row = 0; row < SIZE; row++) {
@@ -86,34 +84,35 @@ int is_solved()
     return 1;
 }
 
-void make_move(char move) {
+void make_move(char move)
+{
     switch (move) {
-        case 'w':
-            if (empty_row > 0) {
-                board[empty_row][empty_col] = board[empty_row - 1][empty_col];
-                board[--empty_row][empty_col] = 0;
-            }
-            break;
-        case 's':
-            if (empty_row < SIZE - 1) {
-                board[empty_row][empty_col] = board[empty_row + 1][empty_col];
-                board[++empty_row][empty_col] = 0;
-            }
-            break;
-        case 'a':
-            if (empty_col > 0) {
-                board[empty_row][empty_col] = board[empty_row][empty_col - 1];
-                board[empty_row][--empty_col] = 0;
-            }
-            break;
-        case 'd':
-            if (empty_col < SIZE - 1) {
-                board[empty_row][empty_col] = board[empty_row][empty_col + 1];
-                board[empty_row][++empty_col] = 0;
-            }
-            break;
-        default:
-            printf("Invalid move. Try again.\n");
-            break;
+    case 'w':
+        if (empty_row > 0) {
+            board[empty_row][empty_col] = board[empty_row - 1][empty_col];
+            board[--empty_row][empty_col] = 0;
+        }
+        break;
+    case 's':
+        if (empty_row < SIZE - 1) {
+            board[empty_row][empty_col] = board[empty_row + 1][empty_col];
+            board[++empty_row][empty_col] = 0;
+        }
+        break;
+    case 'a':
+        if (empty_col > 0) {
+            board[empty_row][empty_col] = board[empty_row][empty_col - 1];
+            board[empty_row][--empty_col] = 0;
+        }
+        break;
+    case 'd':
+        if (empty_col < SIZE - 1) {
+            board[empty_row][empty_col] = board[empty_row][empty_col + 1];
+            board[empty_row][++empty_col] = 0;
+        }
+        break;
+    default:
+        printf("Invalid move. Try again.\n");
+        break;
     }
 }
