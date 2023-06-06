@@ -16,34 +16,32 @@ SRC_TEST = $(TESTDIR)/test.c
 
 OBJ_MAIN = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRC_MAIN))
 OBJ_BOARD = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRC_BOARD))
-OBJ_TEST_MAIN = $(patsubst $(TESTDIR)/%.c,$(OBJDIR)/%.o,$(SRC_TEST_MAIN))
-OBJ_TEST = $(patsubst $(TESTDIR)/%.c,$(OBJDIR)/%.o,$(SRC_TEST))
+OBJ_TEST_MAIN = $(patsubst $(TESTDIR)/%.c,$(OBJDIR)/test/%.o,$(SRC_TEST_MAIN))
+OBJ_TEST = $(patsubst $(TESTDIR)/%.c,$(OBJDIR)/test/%.o,$(SRC_TEST))
 
 all: $(BINDIR)/$(TARGET)
 
 test: $(BINDIR)/$(TEST_TARGET)
 
 $(BINDIR)/$(TARGET): $(OBJ_MAIN) $(OBJ_BOARD)
-	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(BINDIR)/$(TEST_TARGET): $(OBJ_BOARD) $(OBJ_TEST_MAIN) $(OBJ_TEST)
-	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/board/%.c
-	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR)/%.o: $(TESTDIR)/%.c
-	@mkdir -p $(@D)
+$(OBJDIR)/test/%.o: $(TESTDIR)/%.c
 	$(CC) $(CFLAGS) -I$(THIRDPARTYDIR) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR) $(BINDIR)
+	rm -f $(OBJDIR)/*.o $(OBJDIR)/test/%.o
+
+fclean: clean
+	rm -f $(BINDIR)/$(TARGET) $(BINDIR)/$(TEST_TARGET)
 
 .PHONY: all test clean

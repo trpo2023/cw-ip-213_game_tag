@@ -113,7 +113,7 @@ void make_move(char move) {
             }
             break;
         default:
-            printf("Invalid move. Try again.\n");
+            printf("Ошибка\n");
             break;
     }
 }
