@@ -12,5 +12,6 @@ int main() {
         scanf(" %c", &move);
         make_move(move);
     }
+    printf("Поздравляем! Вы выиграли!\n");
     return 0;
 }
