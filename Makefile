@@ -38,6 +38,13 @@ $(OBJDIR)/%.o: $(SRCDIR)/board/%.c
 $(OBJDIR)/%.o: $(TESTDIR)/%.c
 	$(CC) $(CFLAGS) -I$(THIRDPARTYDIR) -c $< -o $@
 
+
+run_test: test
+	./$(BINDIR)/$(TEST_TARGET)
+
+tag: all
+	./$(BINDIR)/$(TARGET)
+
 clean:
 	rm -f $(OBJDIR)/*.o
 	rm -f $(OBJDIR)/main/*.o
