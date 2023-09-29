@@ -7,7 +7,7 @@ int main() {
     mixing_board();
     while (!is_solved()) {
         print_board();
-        printf("Нажмите на кнопку для движения (w - вверх, s - вниз, a - влево, d - вправо): ");
+        printf("Нажмите на кнопку для движения (w - вверх, s - вниз, a - влево, d - вправо, x - выход из игры): ");
         char move;
         scanf(" %c", &move);
         make_move(move);
