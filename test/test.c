@@ -52,3 +52,25 @@ CTEST(board_suite, ctest_make_move_test)
     ASSERT_EQUAL(0, board[3][3]); 
     ASSERT_EQUAL(15, board[3][2]); 
 }
+
+CTEST(board_suite, ctest_print_board_test) 
+{
+    initialize_board();
+    print_board();
+
+    ASSERT_EQUAL(1, board[0][0]);
+    ASSERT_EQUAL(2, board[0][1]);
+    ASSERT_EQUAL(3, board[0][2]);
+    ASSERT_EQUAL(4, board[0][3]);
+    ASSERT_EQUAL(5, board[1][0]);
+    ASSERT_EQUAL(6, board[1][1]);
+    ASSERT_EQUAL(7, board[1][2]);
+    ASSERT_EQUAL(8, board[1][3]);
+    ASSERT_EQUAL(9, board[2][0]);
+    ASSERT_EQUAL(10, board[2][1]);
+    ASSERT_EQUAL(11, board[2][2]);
+    ASSERT_EQUAL(12, board[2][3]);
+    ASSERT_EQUAL(13, board[3][0]);
+    ASSERT_EQUAL(14, board[3][1]);
+    ASSERT_EQUAL(15, board[3][2]);
+}
