@@ -1,5 +1,5 @@
-#include "../thirdparty/ctest.h"
 #include "../src/board/board.h"
+#include "../thirdparty/ctest.h"
 
 CTEST(board_suite, ctest_initialize_board_test)
 {
@@ -18,7 +18,7 @@ CTEST(board_suite, ctest_initialize_board_test)
     ASSERT_TRUE(1);
 }
 
-CTEST(board_suite, ctest_mixing_board_test) 
+CTEST(board_suite, ctest_mixing_board_test)
 {
     mixing_board();
 
@@ -35,25 +35,25 @@ CTEST(board_suite, ctest_mixing_board_test)
     }
 }
 
-CTEST(board_suite, ctest_make_move_test) 
-{ 
-    initialize_board(); 
- 
-    make_move('w'); 
-    ASSERT_EQUAL(0, board[2][3]); 
-    ASSERT_EQUAL(12, board[3][3]); 
-    make_move('s'); 
-    ASSERT_EQUAL(0, board[3][3]); 
-    ASSERT_EQUAL(12, board[2][3]); 
-    make_move('a'); 
-    ASSERT_EQUAL(0, board[3][2]); 
-    ASSERT_EQUAL(15, board[3][3]); 
-    make_move('d'); 
-    ASSERT_EQUAL(0, board[3][3]); 
-    ASSERT_EQUAL(15, board[3][2]); 
+CTEST(board_suite, ctest_make_move_test)
+{
+    initialize_board();
+
+    make_move('w');
+    ASSERT_EQUAL(0, board[2][3]);
+    ASSERT_EQUAL(12, board[3][3]);
+    make_move('s');
+    ASSERT_EQUAL(0, board[3][3]);
+    ASSERT_EQUAL(12, board[2][3]);
+    make_move('a');
+    ASSERT_EQUAL(0, board[3][2]);
+    ASSERT_EQUAL(15, board[3][3]);
+    make_move('d');
+    ASSERT_EQUAL(0, board[3][3]);
+    ASSERT_EQUAL(15, board[3][2]);
 }
 
-CTEST(board_suite, ctest_print_board_test) 
+CTEST(board_suite, ctest_print_board_test)
 {
     initialize_board();
     print_board();
